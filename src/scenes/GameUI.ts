@@ -10,7 +10,6 @@ export default class GameUI extends Phaser.Scene {
 	}
 
 	create() {
-		console.log('here')
 		this._points = 0
 
 		const pointsLabel = this.add.text(30, 30, '0', {

@@ -42,6 +42,33 @@ export default class CircleController {
 		)
 	}
 
+	private oobXY() {
+		const axisToggle = Phaser.Math.Between(0, 3)
+		const x = Phaser.Math.Between(0, this.gameWidth)
+		const y = Phaser.Math.Between(0, this.gameHeight)
+		let xy = {x, y}
+		switch (axisToggle) {
+			case 0: {
+				xy.x = 0
+				break
+			}
+			case 1: {
+				xy.y = 0
+				break
+			}
+			case 2: {
+				xy.x = this.gameWidth
+				break
+			}
+			case 3: {
+				xy.y = this.gameHeight
+				break
+			}
+		}
+		console.log(xy)
+		return xy
+	}
+
 	private randXY(mod: number) {
 		const x = Phaser.Math.Between(mod, this.gameWidth - mod)
 		const y = Phaser.Math.Between(mod, this.gameHeight - mod)
@@ -54,7 +81,7 @@ export default class CircleController {
 
 	private spawnCircles(num: number) {
 		for (let i = 0; i < num; i++) {
-			const {x, y} = this.randXY(10)
+			const {x, y} = this.oobXY()
 			const enemyCircle = this.circles!.get(x, y)
 			this.scene.physics.world.enableBody(enemyCircle)
 			this.scene.physics.moveTo(enemyCircle, this.player.x, this.player.y)
