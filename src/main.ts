@@ -1,11 +1,12 @@
 import Phaser from 'phaser'
 
 import Game from './scenes/Game'
+import GameUI from './scenes/GameUI'
 
 const config: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
-	width: 800,
-	height: 600,
+	width: 1200,
+	height: 900,
 	physics: {
 		default: 'arcade',
 		arcade: {
@@ -13,7 +14,7 @@ const config: Phaser.Types.Core.GameConfig = {
 			debug: true,
 		},
 	},
-	scene: [Game],
+	scene: [Game, GameUI],
 }
 
 export default new Phaser.Game(config)
